@@ -1,0 +1,55 @@
+.widget {
+  box-shadow: 0 4px 16px #aaa;
+  background-color: white;
+  border-radius: 8px;
+  margin: 30px auto;
+  border-top: solid 8px teal;
+}
+
+.widget>* {
+  padding: 10px 20px;
+}
+
+.to-do {
+  max-width: 500px;
+}
+
+.items {
+  max-width: calc(100% - 100px);
+  padding: 20px;
+  position: relative;
+}
+.list-tabs{
+  display: flex;
+  align-items: center;
+  padding:10px;
+  margin:10px auto;
+}
+.list-single-tab{
+  border-radius: 4px;
+  padding:5px 15px;
+  border-right: 3px solid rgb(201, 202, 202);
+  border-bottom: 2px solid rgb(205, 206, 206)
+}
+.list-item {
+  position: relative;
+  background-color: rgb(240, 232, 232)
+}
+
+.list-item span {
+  position: absolute;
+  background-color: rgb(1, 105, 105);
+  padding:5px;
+  left:0;
+  color: white;
+}
+.actions{
+background-color:transparent;
+border: 3px solid rgb(180, 180, 180);
+border-radius:50%;
+margin: 0 5px;
+}
+.checked{
+  color: teal;
+  border: 3px solid teal;
+}
