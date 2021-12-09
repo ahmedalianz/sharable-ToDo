@@ -1,7 +1,7 @@
 import {Switch,Route,Redirect,BrowserRouter} from 'react-router-dom'
-import Auth from './components/auth'
-import Home from './components/home'
-import ListView from './components/listView'
+import Auth from './pages/auth'
+import Home from './pages/home'
+import ListView from './pages/listView'
 export default function App() {
     const user=localStorage.getItem('user')
     return (

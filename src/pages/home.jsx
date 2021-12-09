@@ -1,5 +1,5 @@
 import {useState,useEffect} from 'react'
-import ListContainer from './list-container';
+import ListContainer from '../components/list-container';
 import { toast } from 'react-toastify';
 import classNames from 'classnames' 
 import { collection, addDoc,getDocs} from "firebase/firestore"; 

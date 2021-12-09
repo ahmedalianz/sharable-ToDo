@@ -1,5 +1,5 @@
 import {useState,useEffect} from 'react'
-import ToDoItem from './todo-item';
+import ToDoItem from '../components/todo-item';
 import { useParams } from 'react-router-dom';
 import {collection,getDocs} from "firebase/firestore"; 
 import db from '../fbConfig'
