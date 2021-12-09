@@ -5,7 +5,6 @@ import classNames from 'classnames'
 import { collection, addDoc,getDocs} from "firebase/firestore"; 
 import db from '../fbConfig'
 import Share from './share';
-import './home.css'
 export default function Home() {
   const [allLists,setAllLists]=useState([])
   const [isLoaded,setIsLoaded]=useState(false)
