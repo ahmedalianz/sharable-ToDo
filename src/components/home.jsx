@@ -4,17 +4,18 @@ import { toast } from 'react-toastify';
 import classNames from 'classnames' 
 import { collection, addDoc,getDocs} from "firebase/firestore"; 
 import db from '../fbConfig'
-import Share from './share';
 export default function Home() {
   const [allLists,setAllLists]=useState([])
   const [isLoaded,setIsLoaded]=useState(false)
   const [newListName,setNewListName]=useState('')
   const [newListTab,setNewListTab]=useState('d-none')
+  const user=JSON.parse(localStorage.getItem('user'))
   const addNewListTab=async(listName)=>{
     try{
       if(listName!==''){
         const list=await addDoc(collection(db, 'listsNames'), {
-          listName
+          listName,
+          userId:user.id,
         });  
         setAllLists([...allLists,{id:list.id,listName,selected:'d-none'}])
         setNewListName('')
@@ -32,10 +33,19 @@ export default function Home() {
         const querySnapshot = await getDocs(collection(db, 'listsNames'));
         let newAllLists=allLists;
         querySnapshot.forEach((doc) => {
-          newAllLists.push({
-            id: doc.id,
-            listName:doc.data().listName
-          })
+          if(doc.data().userId==user.id){
+            newAllLists.push({
+              id: doc.id,
+              listName:doc.data().listName
+            })  
+            if(newAllLists.length>0){ // to show only the first list at start up
+              newAllLists.map(list=>{
+                list.selected='d-none'
+                return list
+              })
+              newAllLists[0].selected=''
+              }
+          }
         });
         setAllLists(newAllLists);
         setIsLoaded(true)
@@ -77,6 +87,7 @@ return (
     </div>
     <i className="fas fa-plus" onClick={()=>setNewListTab('')}></i>
   </div>
+  
     {
       isLoaded && allLists.map(list =>(
         <ListContainer 
@@ -85,12 +96,6 @@ return (
         />
       ))
     }
-    <div className={
-      classNames('d-flex flex-column align-items-center p-3 bg-dark text-white',
-      allLists.length>0?'':'d-none')}>
-      <h6>share your list here</h6>
-      <Share/>
-    </div>
 
 </>
 )

@@ -1,23 +1,28 @@
 import {useState,useEffect} from 'react'
 import { toast } from 'react-toastify';
 import ToDoItem from './todo-item';
+import classNames from 'classnames' 
 import {  doc,collection, addDoc,getDocs,deleteDoc,updateDoc} from "firebase/firestore"; 
 import db from '../fbConfig'
+import Share from './share';
 export default function ListContainer({list}) {
   const [text,setText]=useState('')
   const [listItems,setListItems]=useState([])
   const [isLoaded,setIsLoaded]=useState(false)
+  const user=JSON.parse(localStorage.getItem('user'))
   useEffect(()=>{
     async function getToDos(){
       try{
         const querySnapshot = await getDocs(collection(db, list.listName));
         let newlistItems=listItems;
         querySnapshot.forEach((doc) => {
-          newlistItems.push({
-            id: doc.id,
-            text:doc.data().text,
-            marked:doc.data().marked,
-          })
+          if(doc.data().userId ==user.id){
+            newlistItems.push({
+              id: doc.id,
+              text:doc.data().text,
+              marked:doc.data().marked,
+            })  
+          }
         });
         setListItems(newlistItems)
         setIsLoaded(true)
@@ -33,7 +38,8 @@ export default function ListContainer({list}) {
     try{
       const todo=await addDoc(collection(db, list.listName), {
         text,
-        marked:false
+        marked:false,
+        userId:user.id
       });
       setListItems([...listItems,{
         id:todo.id,
@@ -95,10 +101,22 @@ return (
           i={index} 
           removeListItem={removeListItem} 
           markListItem={markListItem} 
+          view=''
         />
       )}
     </ul>
   </div>
+
+  <div className={
+      classNames('d-flex flex-column align-items-center p-3 bg-dark text-white',
+      list?'':'d-none')}>
+      <h6>share This list here</h6>
+      <Share
+      listName={list.listName}
+      userId={user.id}
+      />
+    </div>
+
 </div>
 )
 }

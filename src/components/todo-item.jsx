@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-export default function ToDoItem({listItem,i,removeListItem,markListItem}) {
+export default function ToDoItem({listItem,i,removeListItem,markListItem,view}) {
     return (
         <li 
         key={listItem.id} 
@@ -9,7 +9,7 @@ export default function ToDoItem({listItem,i,removeListItem,markListItem}) {
             <div className={classNames(listItem.marked?'text-decoration-line-through':'')}>
                 {listItem.text}
             </div>
-            <div>
+            <div className={view}>
             <button onClick={() => markListItem(listItem)}
             className={classNames('actions',listItem.marked?'checked':'')}>
               <i className="fas fa-check"></i>
