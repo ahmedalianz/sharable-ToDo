@@ -8,4 +8,4 @@ then
 
  **npm start** 
 
->>App is working on this link >> [Sharable To Dos](https://sharable-to-do-list.firebaseapp.com/)
+>>App is working on this link >> [Sharable To Dos](https://sharable-todo.herokuapp.com/)
