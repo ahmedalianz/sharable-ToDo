@@ -1,9 +1,10 @@
 import {useState,useEffect} from 'react'
 import ListContainer from '../components/list-container';
 import { toast } from 'react-toastify';
-import classNames from 'classnames' 
 import { collection, addDoc,getDocs} from "firebase/firestore"; 
 import db from '../fbConfig'
+import Spinner from '../components/spinner'
+import classNames from 'classnames';
 export default function Home() {
   const [allLists,setAllLists]=useState([])
   const [isLoaded,setIsLoaded]=useState(false)
@@ -65,38 +66,47 @@ export default function Home() {
     lists.find(list=>list.id === id).selected=''
     setAllLists(lists)
   }
-return (
+return isLoaded? (
 <>
-  <div className='list-tabs widget'>
-    <h3 className={classNames(allLists.length>0?'d-none':'')}>add list name here =={'>'}</h3>
-    {
-    allLists.map(list=>(
-    <button 
-      className='list-single-tab mx-2'
-      key={list.id}
-      onClick={()=>{chooseList(list.id)}}>
-        {list.listName}
-    </button>
-    ))
-    }
-    <div className={`mx-2 ${newListTab}`}>
-      <input type="text" placeholder="new list name . ." value={newListName}
-        onChange={(e)=>setNewListName(e.target.value)}
-      />
-      <i className="fas fa-check ms-2" onClick={()=> addNewListTab(newListName)}></i>
+<section className="vh-100 gradient-custom">
+  <div className="container py-5 h-100">
+    <div className="row d-flex justify-content-center align-items-center h-100">
+      <div className="col col-xl-10">
+        <div className="card">
+        <ul className="nav nav-tabs mb-4 pb-2 position-relative" id="ex1" role="tablist">
+        {
+      allLists.map(list=>(
+        <li className="nav-item" key={list.id} onClick={()=>{chooseList(list.id)}}>
+        <a className="nav-link">{list.listName}</a>
+      </li>
+      ))
+      }
+        <div className={`mx-2 ${newListTab}`}>
+          <input type="text" className='form-control' 
+            placeholder="new list name . ." 
+            value={newListName}
+            onChange={(e)=>setNewListName(e.target.value)}
+          />
+          <i className="fas fa-check ms-2" onClick={()=> addNewListTab(newListName)}></i>
     </div>
-    <i className="fas fa-plus" onClick={()=>setNewListTab('')}></i>
-  </div>
-  
-    {
-      isLoaded && allLists.map(list =>(
+    <h6 className={classNames('starter',allLists.length>0?'d-none':'')}>start your first list here ={'>'}</h6>
+    <i className="far fa-plus-square" onClick={()=>setNewListTab('d-flex align-items-center')}></i>
+            </ul>
+            {
+      allLists.map(list =>(
         <ListContainer 
         list={list}
         key={list.id}
         />
       ))
     }
-
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 </>
+):(
+  <Spinner/>
 )
 }

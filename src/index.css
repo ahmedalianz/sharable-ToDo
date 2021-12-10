@@ -11,50 +11,32 @@ body {
   text-transform: capitalize;
   font-family: 'Roboto', sans-serif;
 }
-.widget {
-  box-shadow: 0 4px 16px #aaa;
-  background-color: white;
-  border-radius: 8px;
-  margin: 30px auto;
-  border-top: solid 8px teal;
+.starter{
+  position: absolute;
+  right: 35px;
+  top: 5px;
+  animation: starter 1s ease-in-out alternate infinite;
 }
-
-.widget>* {
-  padding: 10px 20px;
-}
-
-.to-do {
-  max-width: 500px;
-}
-
-.items {
-  max-width: calc(100% - 100px);
-  padding: 20px;
-  position: relative;
-}
-@media screen  and (max-width:480px){
-  .items {
-    max-width: 100%;
+@keyframes starter {
+  100%{
+    right:55px
   }
 }
-.list-tabs{
-  display: flex;
-  align-items: center;
-  padding:10px;
-  margin:10px auto;
+.nav-item {
+  border-right: 2px solid teal;
+  border-radius:3px;
+  cursor: pointer;
 }
-.list-single-tab{
-  border-radius: 4px;
-  padding:5px 15px;
-  border-right: 3px solid rgb(201, 202, 202);
-  border-bottom: 2px solid rgb(205, 206, 206)
-}
-.list-item {
-  position: relative;
-  background-color: rgb(240, 232, 232)
+.fa-plus-square{
+  cursor: pointer;
+  font-size:25px;
+  color:teal;
+  position: absolute;
+  right:5px;
+  top: 5px;
 }
 
-.list-item span {
+.list-group-item span {
   position: absolute;
   background-color: rgb(1, 105, 105);
   padding:5px;
@@ -76,7 +58,7 @@ margin: 0 5px;
   cursor: pointer;
   background-color:teal;
   border-radius: 50%;
-  font-size:14px
+  font-size:14px;
 }
 /* -----------------auth----------------------- */
 .join-block {
@@ -126,4 +108,12 @@ margin: 0 5px;
 .join-block .user {
   color: rgb(22, 130, 192);
   padding-right: 10px;
+}
+.gradient-custom {
+  background: radial-gradient(50% 123.47% at 50% 50%, #00ff94 0%, #720059 100%),
+    linear-gradient(121.28deg, #669600 0%, #ff0000 100%),
+    linear-gradient(360deg, #0029ff 0%, #8fff00 100%),
+    radial-gradient(100% 164.72% at 100% 100%, #6100ff 0%, #00ff57 100%),
+    radial-gradient(100% 148.07% at 0% 0%, #fff500 0%, #51d500 100%);
+  background-blend-mode: screen, color-dodge, overlay, difference, normal;
 }
