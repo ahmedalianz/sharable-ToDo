@@ -41,6 +41,9 @@ top: 25px;right:0;
   right:5px;
   top: 5px;
 }
+.list-group-item{
+  background-color:#f4f6f7
+}
 .list-group-item span {
   position: absolute;
   background-color: rgb(1, 105, 105);

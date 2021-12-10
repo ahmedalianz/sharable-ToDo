@@ -68,46 +68,45 @@ export default function Home() {
   }
 return isLoaded? (
 <>
-<section className="vh-100 gradient-custom">
-  <div className="container py-5 h-100">
-    <div className="row d-flex justify-content-center align-items-center h-100">
-      <div className="col col-xl-10">
-        <div className="card">
-        <ul className="nav nav-tabs mb-4 pb-2 position-relative" id="ex1" role="tablist">
-        {
-      allLists.map(list=>(
-        <li className="nav-item" key={list.id} onClick={()=>{chooseList(list.id)}}>
-        <span className="nav-link">{list.listName}</span>
-      </li>
-      ))
-      }
-        <div className={`mx-2 ${newListTab}`}>
-          <input type="text" className='form-control' 
-            placeholder="new list name . ." 
-            value={newListName}
-            onChange={(e)=>setNewListName(e.target.value)}
-          />
-          <i className="fas fa-check ms-2 cursor-pointer" onClick={()=> addNewListTab(newListName)}></i>
-    </div>
-    <div className={classNames('starter',allLists.length>0?'d-none':'')}>
-    <h6 >create your first list here </h6>
-    <i className="fas fa-hand-point-down fa-lg"></i>
-    </div>
-    <i className="far fa-plus-square" onClick={()=>setNewListTab('d-flex align-items-center')}></i>
+  <section className="h-100 gradient-custom">
+    <div className="container py-5 h-100">
+      <div className="row d-flex justify-content-center align-items-center h-100">
+        <div className="col col-xl-10">
+          <div className="card">
+            <ul className="nav nav-tabs mb-4 pb-2 position-relative" id="ex1" role="tablist">
+              {
+                allLists.map(list=>(
+                  <li className="nav-item" key={list.id} onClick={()=>{chooseList(list.id)}}>
+                    <span className="nav-link">{list.listName}</span>
+                  </li>
+                ))
+              }
+              <div className={`mx-2 ${newListTab}`}>
+                <input type="text" className='form-control' 
+                  placeholder="new list name . ." 
+                  value={newListName}
+                  onChange={(e)=>setNewListName(e.target.value)}/>
+                <i className="fas fa-check ms-2 cursor-pointer" onClick={()=> addNewListTab(newListName)}></i>
+              </div>
+              <div className={classNames('starter',allLists.length>0?'d-none':'')}>
+                <h6 >create your first list here </h6>
+                <i className="fas fa-hand-point-down fa-lg"></i>
+              </div>
+              <i className="far fa-plus-square" onClick={()=>setNewListTab('d-flex align-items-center')}></i>
             </ul>
-            {
-      allLists.map(list =>(
-        <ListContainer 
-        list={list}
-        key={list.id}
-        />
-      ))
-    }
+          {
+            allLists.map(list =>(
+              <ListContainer 
+                list={list}
+                key={list.id}
+            />
+            ))
+          }
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 </>
 ):(
   <Spinner/>

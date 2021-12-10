@@ -76,49 +76,53 @@ export default function ListContainer({list}) {
     }
   }
 return isLoaded?(
-      <div className={`${list.selected}`}>
-          <div className="card-body">
-          <h3 className='text-center'>Sharable To-Do List</h3>
+          <div className={`${list.selected}`}>
+            <div className="card-body">
+              <h3 className='text-center'>Sharable To-Do List</h3>
 
-          <form className="d-flex justify-content-center align-items-center form-group mb-4" onSubmit={(e)=>addListItem(e)}> 
-            <div className="form-outline flex-fill">
-              <input type="text" value={text}
-                className="form-control" required
-                placeholder="Enter item here . . ."
-                onChange={e=>setText(e.target.value)}
-                />
+              <form className="d-flex justify-content-center align-items-center form-group mb-4" onSubmit={(e)=>addListItem(e)}> 
+                <div className="form-outline flex-fill">
+                  <input type="text" value={text}
+                    className="form-control" required
+                    placeholder="Enter item here . . ."
+                    onChange={e=>setText(e.target.value)}/>
+                </div>
+                <button className="btn btn-primary ms-2">Add to list</button>
+              </form>
+
+              <div>
+                <h5 className='text-center'>{list.listName}</h5>
+                <div>
+                  <ul className="list-group mb-0">
+                  {
+                    listItems.map((listItem,index) =>
+                    <ToDoItem 
+                      key={listItem.id} 
+                      listItem={listItem} 
+                      i={index} 
+                      removeListItem={removeListItem} 
+                      markListItem={markListItem} 
+                      view=''
+                    />)
+                  }
+                  </ul>
+                </div>
+              </div>
             </div>
-            <button className="btn btn-primary ms-2">Add to list</button>
-          </form>
-
-          <div>
-            <h5 className='text-center'>{list.listName}</h5>
-            <div>
-              <ul className="list-group mb-0">
-              {listItems.map((listItem,index) =>
-                      <ToDoItem 
-                        key={listItem.id} 
-                        listItem={listItem} 
-                        i={index} 
-                        removeListItem={removeListItem} 
-                        markListItem={markListItem} 
-                        view=''
-                      />
-                    )}
-              </ul>
+            <div className={
+              classNames('d-flex flex-column align-items-center p-3 bg-dark text-white',
+              list?'':'d-none')}>
+              <h6>share This list here</h6>
+              <button className='btn btn-danger' 
+                onClick={()=>{localStorage.removeItem('user');window.location.assign('/')}}>
+                  Log out
+              </button>
+              <Share
+                listName={list.listName}
+                userId={user.id}
+              />
             </div>
           </div>
-        </div>
-        <div className={
-            classNames('d-flex flex-column align-items-center p-3 bg-dark text-white',
-            list?'':'d-none')}>
-            <h6>share This list here</h6>
-            <Share
-            listName={list.listName}
-            userId={user.id}
-            />
-          </div>
-  </div>
 ):(
   <Spinner/>
 )

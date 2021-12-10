@@ -33,26 +33,27 @@ export default function ListView() {
         getToDos()
       },[])    
     return isLoaded?(
-          <div className="gradient-custom vh-100">
+          <div className="gradient-custom h-100">
             <div className="container py-5 h-100">
               <div className="row d-flex justify-content-center align-items-center h-100">
                 <div className="col col-xl-10">
                   <div className="card">
                     <h3 className='text-center p-3'>{listName}</h3>
                     <ul className='list-group container mb-0"'>
-                      {listItems.map((listItem,index) =>
-                      <ToDoItem 
-                        key={listItem.id} 
-                        listItem={listItem} 
-                        i={index}
-                        view='d-none'
-                      />
-                      )}
+                      {
+                      listItems.map((listItem,index) =>
+                        <ToDoItem 
+                          key={listItem.id} 
+                          listItem={listItem} 
+                          i={index}
+                          view='d-none'
+                        />)
+                      }
                     </ul>
                     <div className='p-4 d-flex flex-column align-items-center p-3 bg-dark text-white'>
                       <span> join us To Create & Share your own lists</span>
                       <Link to='/'>
-                      <button className='btn btn-danger'>Join</button>
+                        <button className='btn btn-danger'>Join</button>
                       </Link>
                     </div>
                   </div>
