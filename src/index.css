@@ -16,7 +16,6 @@ body {
   right: 5px;
   top: -65px;
 }
-
 .fa-hand-point-down{
   animation: starter 1s ease-in-out alternate infinite;
 position: absolute;
