@@ -8,7 +8,7 @@ export default function Auth() {
             try{
                 const querySnapshot = await getDocs(collection(db, 'users'));
                 querySnapshot.forEach((doc) => {
-                  if(doc.data().name==name){
+                  if(doc.data().name===name){
                     localStorage.setItem('user',JSON.stringify({name:doc.data().name,id:doc.id}))
                     window.location.assign('/')
                 }

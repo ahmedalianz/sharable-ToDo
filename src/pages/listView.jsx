@@ -15,7 +15,7 @@ export default function ListView() {
             const querySnapshot = await getDocs(collection(db, listName));
             let newlistItems=listItems;
             querySnapshot.forEach((doc) => {
-              if(doc.data().userId ==id){
+              if(doc.data().userId ===id){
                 newlistItems.push({
                   id: doc.id,
                   text:doc.data().text,

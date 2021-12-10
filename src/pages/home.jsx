@@ -34,7 +34,7 @@ export default function Home() {
         const querySnapshot = await getDocs(collection(db, 'listsNames'));
         let newAllLists=allLists;
         querySnapshot.forEach((doc) => {
-          if(doc.data().userId==user.id){
+          if(doc.data().userId===user.id){
             newAllLists.push({
               id: doc.id,
               listName:doc.data().listName
@@ -77,7 +77,7 @@ return isLoaded? (
         {
       allLists.map(list=>(
         <li className="nav-item" key={list.id} onClick={()=>{chooseList(list.id)}}>
-        <a className="nav-link">{list.listName}</a>
+        <span className="nav-link">{list.listName}</span>
       </li>
       ))
       }
@@ -87,9 +87,12 @@ return isLoaded? (
             value={newListName}
             onChange={(e)=>setNewListName(e.target.value)}
           />
-          <i className="fas fa-check ms-2" onClick={()=> addNewListTab(newListName)}></i>
+          <i className="fas fa-check ms-2 cursor-pointer" onClick={()=> addNewListTab(newListName)}></i>
     </div>
-    <h6 className={classNames('starter',allLists.length>0?'d-none':'')}>start your first list here ={'>'}</h6>
+    <div className={classNames('starter',allLists.length>0?'d-none':'')}>
+    <h6 >create your first list here </h6>
+    <i className="fas fa-hand-point-down fa-lg"></i>
+    </div>
     <i className="far fa-plus-square" onClick={()=>setNewListTab('d-flex align-items-center')}></i>
             </ul>
             {

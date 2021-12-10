@@ -3,8 +3,10 @@ import {
     EmailShareButton,
     FacebookShareButton,
     LinkedinShareButton,
+    WhatsappShareButton,
     LinkedinIcon,
     EmailIcon,
+    WhatsappIcon,
     FacebookIcon,  
 } from "react-share";  
 import { toast } from 'react-toastify';
@@ -18,7 +20,7 @@ export default function Share({listName,userId}) {
             <FacebookShareButton className="mx-1"
                 url={`https://sharable-todo.herokuapp.com/listView/${userId}/${listName}`}
                 quote={"Hey Watch My To Do List Here . ."}
-                hashtag="#React-FireBase"
+                hashtag="#React#FireBase"
             >
                 <FacebookIcon logofillcolor="white" size={35} round={true}/>
             </FacebookShareButton>
@@ -35,6 +37,12 @@ export default function Share({listName,userId}) {
             >
                 <LinkedinIcon logofillcolor="white" size={35} round={true}/>
             </LinkedinShareButton>
+            <WhatsappShareButton className="mx-1"
+                url={`https://sharable-todo.herokuapp.com/listView/${userId}/${listName}`}
+                title="Hey Watch My To Do List Here . ."
+            >
+                <WhatsappIcon logofillcolor="white" size={35} round={true}/>
+            </WhatsappShareButton>
             <i className="fas fa-link" onClick={() =>handleCopy()}></i>
                 </div>
     )

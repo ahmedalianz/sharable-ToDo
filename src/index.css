@@ -13,15 +13,21 @@ body {
 }
 .starter{
   position: absolute;
-  right: 35px;
-  top: 5px;
+  right: 5px;
+  top: -65px;
+}
+
+.fa-hand-point-down{
   animation: starter 1s ease-in-out alternate infinite;
+position: absolute;
+top: 25px;right:0;
 }
 @keyframes starter {
   100%{
-    right:55px
+    top: 40px;
   }
 }
+
 .nav-item {
   border-right: 2px solid teal;
   border-radius:3px;
@@ -35,7 +41,6 @@ body {
   right:5px;
   top: 5px;
 }
-
 .list-group-item span {
   position: absolute;
   background-color: rgb(1, 105, 105);
@@ -44,7 +49,6 @@ body {
   color: white;
 }
 .actions{
-background-color:transparent;
 border: 3px solid rgb(180, 180, 180);
 border-radius:50%;
 margin: 0 5px;

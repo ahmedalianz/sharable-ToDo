@@ -17,7 +17,7 @@ export default function ListContainer({list}) {
         const querySnapshot = await getDocs(collection(db, list.listName));
         let newlistItems=listItems;
         querySnapshot.forEach((doc) => {
-          if(doc.data().userId ==user.id){
+          if(doc.data().userId ===user.id){
             newlistItems.push({
               id: doc.id,
               text:doc.data().text,
@@ -68,7 +68,7 @@ export default function ListContainer({list}) {
     try{
       const todoRef = doc(db, list.listName,listItem.id);
       await updateDoc(todoRef, { marked:true});
-      listItems.find(li => li.id==listItem.id).marked=true
+      listItems.find(li => li.id===listItem.id).marked=true
       toast.success('List Item is Marked Done')
     }
     catch(e){
