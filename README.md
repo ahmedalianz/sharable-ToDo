@@ -1,14 +1,14 @@
-# Sharable To-Do List App 
+# Sharable To-Do List App
 
-To initiate the application you will need to do 
+To initiate the application you will need to do
 
-**npm install** then **npm start** 
+**npm install** then **npm start**
 
->>App is Running on this link >> [Sharable To Dos](https://sharable-todo.herokuapp.com/)
+> > App is Running on this link >> [Sharable To Dos](https://sharable-to-do.vercel.app/)
 
 you can create any user by just name so lists are just for your username
 ![alt text](https://i.ibb.co/zhf0LNY/Screenshot-3.png)
-Every username has his own lists & able to : 
+Every username has his own lists & able to :
 **Create a New list**
 ![alt text](https://i.ibb.co/2yqhzZP/Screenshot-4.png)
 
