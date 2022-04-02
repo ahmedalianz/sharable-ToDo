@@ -1,15 +1,15 @@
+import { getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore"
+
 initializeApp({
-  apiKey: "AIzaSyDTkjrZh3VI0vPaPE__WC-U7Z7Kf9d1_Dw",
-  authDomain: "sharable-to-do-list.firebaseapp.com",
-  projectId: "sharable-to-do-list",
-  storageBucket: "sharable-to-do-list.appspot.com",
-  messagingSenderId: "916475841085",
-  appId: "1:916475841085:web:67b9bfdf437d9a0798b854",
-  measurementId: "${config.measurementId}"
+  apiKey: "AIzaSyDdcG23VDI647aJVf7-RWFDDBoBlYLQNes",
+  authDomain: "shareble-todos.firebaseapp.com",
+  projectId: "shareble-todos",
+  storageBucket: "shareble-todos.appspot.com",
+  messagingSenderId: "224636763063",
+  appId: "1:224636763063:web:a3fd218963c98f38424632",
 });
 
 // Initialize Firebase
 const db = getFirestore();
-export default db
+export default db;
